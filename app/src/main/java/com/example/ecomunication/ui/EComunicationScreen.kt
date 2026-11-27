@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.ecomunication.UserViewModel
 import com.example.ecomunication.R
+import com.example.ecomunication.ui.components.GrabacionAutomaticaScreen
 
 enum class EComunicationScreen(@StringRes val title: Int) {
     CambiarPassword(title = R.string.cambiar_password),
@@ -39,7 +40,8 @@ enum class EComunicationScreen(@StringRes val title: Int) {
     PodcastPub(title = R.string.podcast_publicados),
     Podcast(title = R.string.podcast),
     Proceso(title = R.string.proceso_video),
-    Resumen(title = R.string.resumen_tema)
+    Resumen(title = R.string.resumen_tema),
+    Grabar(title = R.string.grabar)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -105,6 +107,9 @@ fun EComunicationApp(
             }
             composable(route = EComunicationScreen.PodcastPub.name) {
                 PodcastPublicadosScreen(
+                    onClickConfiguration = {
+                        navController.navigate(EComunicationScreen.Configuration.name)
+                    },
                     botonNuevo = {
                         navController.navigate(EComunicationScreen.Tema.name)
                     },
@@ -151,7 +156,9 @@ fun EComunicationApp(
             composable(route = EComunicationScreen.Instrucciones.name) {
                 InstruccionesScreen(
                     onClickContinuar = {
-                        navController.navigate(EComunicationScreen.Resumen.name)
+                        //navController.navigate(EComunicationScreen.Resumen.name)
+                        navController.navigate( EComunicationScreen.Grabar.name)
+
                     },
                     onClickCancel = {
                         navController.popBackStack(EComunicationScreen.Tema.name, inclusive = false)
@@ -167,6 +174,46 @@ fun EComunicationApp(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(dimensionResource(R.dimen.padding_large))
+                )
+            }
+            composable(route = EComunicationScreen.FaseEval.name) {
+                FaseEvalScreen(
+                    onClick = {
+                        navController.popBackStack(EComunicationScreen.PodcastPub.name, inclusive = false)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dimensionResource(R.dimen.padding_large))
+                )
+            }
+            composable(route = EComunicationScreen.Configuration.name) {
+                ConfigurarScreen(
+                    onClickCambiarPassword = {
+                        navController.navigate(EComunicationScreen.CambiarPassword.name)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dimensionResource(R.dimen.padding_large))
+                )
+            }
+            composable(route = EComunicationScreen.CambiarPassword.name) {
+                CambiarPasswordScreen(
+                    onClickConfirmar = { /* Aquí se pone la acción de cambiar contraseña*/},
+                    onClickCancelar = {
+                        navController.popBackStack(EComunicationScreen.Configuration.name, inclusive = false)
+                    },
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dimensionResource(R.dimen.padding_large))
+                )
+            }
+            composable(route = EComunicationScreen.Grabar.name) {
+                GrabacionAutomaticaScreen(
+                    duracionSegundos = 15,
+                    onVideoGuardado = { urlDelVideo ->
+                        // Aquí se indica guardar el video
+                        navController.navigate(EComunicationScreen.FaseEval.name)
+                    }
                 )
             }
             composable(route = EComunicationScreen.FaseEval.name) {

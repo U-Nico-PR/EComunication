@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -16,6 +17,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -42,6 +44,7 @@ import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
 fun PodcastPublicadosScreen(
+    onClickConfiguration: () -> Unit,
     botonNuevo: () -> Unit,
     botonEstadoPodcast: () -> Unit,
     botonFeedback: () -> Unit,
@@ -56,6 +59,7 @@ fun PodcastPublicadosScreen(
             style = MaterialTheme.typography.headlineMedium
         )
         Botones(
+            onClickConfiguration = onClickConfiguration,
             onClickNuevo = botonNuevo,
             onClickVerEstado = botonEstadoPodcast,
         )
@@ -69,35 +73,54 @@ fun PodcastPublicadosScreen(
 fun Botones(
     onClickNuevo: () -> Unit,
     onClickVerEstado: () -> Unit,
+    onClickConfiguration: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Button(
             onClick = onClickNuevo,
             shape = MaterialTheme.shapes.medium,
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
         ) {
             Icon(
                 imageVector = Icons.Filled.Add,
                 contentDescription = "Añadir Video",
+                modifier = Modifier.size(18.dp)
             )
             Text(
-                text = "Nuevo"
+                text = "Nuevo",
+                maxLines = 1
             )
         }
         Button(
             onClick = onClickVerEstado,
-            shape = MaterialTheme.shapes.medium
+            shape = MaterialTheme.shapes.medium,
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+            modifier = Modifier.weight(1f)
         ) {
             Icon(
                 imageVector = Icons.Outlined.Info,
-                contentDescription = "Ver Estado de Podcast",
+                contentDescription = "Estado de Potcasts",
+                modifier.size(18.dp)
             )
             Text(
-                text = "Ver Estado de Podcast",
+                text = "Estado Podcasts",
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+        Button(
+            onClick = onClickConfiguration,
+            shape = MaterialTheme.shapes.medium
+        ) {
+            Icon(
+                imageVector = Icons.Default.Settings,
+                contentDescription = "Configuración"
             )
         }
     }
@@ -217,6 +240,7 @@ fun BotFeedback(
 fun PodcastPublicacionesPreview() {
     EComunicationTheme() {
         PodcastPublicadosScreen(
+            onClickConfiguration = {},
             botonNuevo = {},
             botonFeedback = {},
             botonEstadoPodcast = {},

@@ -33,13 +33,16 @@ import com.example.ecomunication.R
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun ConfigurarScreen(modifier: Modifier = Modifier) {
+fun ConfigurarScreen(
+    onClickCambiarPassword: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
         Button(
-            onClick = {},
+            onClick = onClickCambiarPassword,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = dimensionResource(R.dimen.padding_large))
@@ -100,6 +103,7 @@ fun AvatarOptionImage(
 fun ConfigurarPreview() {
     EComunicationTheme() {
         ConfigurarScreen(
+            onClickCambiarPassword = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_large))

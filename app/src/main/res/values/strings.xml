@@ -13,6 +13,7 @@
     <string name="proceso_video">Proceso</string>
     <string name="resumen_tema">Resumen del Tema</string>
     <string name="back_button">Back</string>
+    <string name="grabar">Grabando Video</string>
 
     <string name="numero_podcasts">Publicaciones: %d</string>
     <string name="comentarios">Comentarios: %d</string>
