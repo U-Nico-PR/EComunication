@@ -11,12 +11,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.SmartDisplay
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,17 +39,69 @@ import com.example.ecomunication.R
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun PotcastScreen(modifier: Modifier = Modifier){
-    Column(modifier = modifier) {
+fun PotcastScreen(
+    modifier: Modifier = Modifier
+){
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = modifier
+            .verticalScroll(scrollState)
+    ) {
         Video(titulo = "Ciberseguridad")
         Evaluacion(
             modifier = Modifier
                 .padding(vertical = dimensionResource(R.dimen.padding_medium))
         )
-
+        Coments()
     }
 }
 
+
+@Composable
+fun Coments(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        CarComentario(comentario = "Te recomiento que hables un poco de tu experiencia. Una anecdota.")
+    }
+}
+
+@Composable
+fun CarComentario(
+    comentario: String
+) {
+    Card() {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_small)),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(60.dp)
+                    .clip(CircleShape)
+                    .background(colorScheme.primaryContainer),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Person,
+                    contentDescription = "Bot Feedback",
+                    tint = colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+            Column(
+                horizontalAlignment = Alignment.Start,
+            ) {
+                Text(
+                    text = "Alumno",
+                )
+                Text(
+                    text = comentario,
+                )
+            }
+        }
+    }
+}
 @Composable
 fun Video(
     titulo: String,
@@ -165,7 +222,7 @@ fun PortcastPreview() {
         PotcastScreen(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(dimensionResource(R.dimen.padding_medium))
+                .padding(dimensionResource(R.dimen.padding_large))
         )
     }
 }

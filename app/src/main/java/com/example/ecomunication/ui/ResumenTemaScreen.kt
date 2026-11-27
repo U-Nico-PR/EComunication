@@ -31,7 +31,9 @@ import com.example.ecomunication.ui.theme.EComunicationTheme
 
 
 @Composable
-fun ResumenTema(modifier: Modifier = Modifier) {
+fun ResumenTemaScreen(
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
@@ -82,7 +84,8 @@ fun ResumenTema(modifier: Modifier = Modifier) {
 @Composable
 fun ResumenTemaPreview() {
     EComunicationTheme() {
-        ResumenTema(modifier = Modifier
+        ResumenTemaScreen(
+            modifier = Modifier
             .fillMaxSize()
             .padding(dimensionResource(R.dimen.padding_large))
         )

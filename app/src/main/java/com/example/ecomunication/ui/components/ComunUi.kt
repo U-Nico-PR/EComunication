@@ -113,6 +113,7 @@ fun Contrasenia(
 
 @Composable
 fun NotaYBoton(
+    onClick: () -> Unit,
     @StringRes texto: Int,
     textoBoton: String,
     showIcon: Boolean,
@@ -126,7 +127,7 @@ fun NotaYBoton(
     }
     Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_large)))
     Button(
-        onClick = {},
+        onClick = onClick,
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(

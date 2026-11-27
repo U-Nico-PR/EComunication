@@ -46,6 +46,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
+    // Dependencia para agregar ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    // Para la navegación
+    implementation("androidx.navigation:navigation-compose:2.7.4")
     // Dependencia para Iconos
     implementation(libs.androidx.compose.material.icons.extended)
 

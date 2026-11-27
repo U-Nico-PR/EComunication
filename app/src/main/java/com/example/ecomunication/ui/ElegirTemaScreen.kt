@@ -24,19 +24,29 @@ import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
 fun ElegirTemaScreen(
+    onClickComenzar: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
     ) {
-        CardTema(tema = "Big Data", resumen = "Análisis de grandes volúmenes de datos")
-        CardTema(tema = "Big Data", resumen = "Análisis de grandes volúmenes de datos")
+        CardTema(
+            onClickComenzar = onClickComenzar,
+            tema = "Big Data",
+            resumen = "Análisis de grandes volúmenes de datos"
+        )
+        CardTema(
+            onClickComenzar = onClickComenzar,
+            tema = "Big Data",
+            resumen = "Análisis de grandes volúmenes de datos"
+        )
     }
 }
 
 @Composable
 fun CardTema(
+    onClickComenzar: () -> Unit,
     tema: String,
     resumen: String,
     modifier: Modifier = Modifier
@@ -65,7 +75,7 @@ fun CardTema(
                 fontSize = 12.sp,
             )
             Button(
-                onClick = {},
+                onClick = onClickComenzar,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
                 Text(
@@ -81,6 +91,7 @@ fun CardTema(
 fun ElegirTemaPreview(modifier: Modifier = Modifier) {
     EComunicationTheme() {
         ElegirTemaScreen(
+            onClickComenzar = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_large))

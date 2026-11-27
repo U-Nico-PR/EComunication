@@ -15,6 +15,7 @@ import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
 fun ProcesoScreen(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -23,6 +24,7 @@ fun ProcesoScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         NotaYBoton(
+            onClick = onClick,
             texto = R.string.proceso,
             textoBoton = "Entendido",
             showIcon = false,
@@ -35,6 +37,7 @@ fun ProcesoScreen(
 fun ProcesoPreview() {
     EComunicationTheme() {
         ProcesoScreen(
+            onClick = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_large))

@@ -29,12 +29,15 @@ import com.example.ecomunication.R
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun EstadoPodcastScreen(modifier: Modifier = Modifier) {
+fun EstadoPodcastScreen(
+    regresar: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier
     ) {
         Button(
-            onClick = {}
+            onClick = regresar
         ) {
             Icon(
                 imageVector = Icons.Filled.ArrowBackIosNew,
@@ -129,6 +132,7 @@ fun Motivo(
 fun EstadoPodcastPreview() {
     EComunicationTheme() {
         EstadoPodcastScreen(
+            regresar = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_large))

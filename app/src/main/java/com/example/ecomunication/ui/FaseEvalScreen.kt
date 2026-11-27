@@ -15,6 +15,7 @@ import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
 fun FaseEvalScreen(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -23,6 +24,7 @@ fun FaseEvalScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         NotaYBoton(
+            onClick = onClick,
             texto = R.string.fase_evaluacion,
             textoBoton = "Continuar",
             showIcon = true,
@@ -35,6 +37,7 @@ fun FaseEvalScreen(
 fun FaseEvalPreview() {
     EComunicationTheme() {
         FaseEvalScreen(
+            onClick = {},
             modifier = Modifier
                 .fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_large))

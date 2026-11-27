@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">E-Comunicación</string>
-    <string name="iniciar_sesion">Iniciar Sesión</string>
+
     <string name="cambiar_password">Cambiar Contraseña</string>
+    <string name="cofiguracion">Configuración</string>
+    <string name="elegir_tema">Elegir tema</string>
+    <string name="estado_podcast">Estado Podcast</string>
+    <string name="fase_eval">Fase Evaluación</string>
+    <string name="instrucctions">Instrucciones</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="podcast_publicados">Podcast Publicados</string>
+    <string name="podcast">Podcast</string>
+    <string name="proceso_video">Proceso</string>
+    <string name="resumen_tema">Resumen del Tema</string>
+    <string name="back_button">Back</string>
+
     <string name="numero_podcasts">Publicaciones: %d</string>
     <string name="comentarios">Comentarios: %d</string>
     <string name="tema"><![CDATA[<b>Tema:</b>]]> %s</string>

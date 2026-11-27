@@ -1,6 +1,7 @@
 package com.example.ecomunication.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,33 +41,43 @@ import com.example.ecomunication.R
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun PodcastPublicadosScreen() {
+fun PodcastPublicadosScreen(
+    botonNuevo: () -> Unit,
+    botonEstadoPodcast: () -> Unit,
+    botonFeedback: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(dimensionResource(R.dimen.padding_large)),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_large))
     ) {
         Text(
             text = stringResource(R.string.numero_podcasts, 10),
             style = MaterialTheme.typography.headlineMedium
         )
-        Botones()
-        CardVideo()
-        Coments()
+        Botones(
+            onClickNuevo = botonNuevo,
+            onClickVerEstado = botonEstadoPodcast,
+        )
+        CardVideo(
+            onClickFeedback = botonFeedback
+        )
     }
-
 }
 
 @Composable
-fun Botones() {
+fun Botones(
+    onClickNuevo: () -> Unit,
+    onClickVerEstado: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
     ) {
         Button(
-            onClick = {},
+            onClick = onClickNuevo,
             shape = MaterialTheme.shapes.medium,
         ) {
             Icon(
@@ -78,7 +89,7 @@ fun Botones() {
             )
         }
         Button(
-            onClick = {},
+            onClick = onClickVerEstado,
             shape = MaterialTheme.shapes.medium
         ) {
             Icon(
@@ -93,7 +104,10 @@ fun Botones() {
 }
 
 @Composable
-fun CardVideo(modifier: Modifier = Modifier) {
+fun CardVideo(
+    onClickFeedback: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Card(
         onClick = {},
         modifier = Modifier.fillMaxWidth(),
@@ -124,13 +138,16 @@ fun CardVideo(modifier: Modifier = Modifier) {
                     modifier = Modifier.size(36.dp)
                 )
             }
-            Informacion()
+            Informacion(onClickFeedback = onClickFeedback)
         }
     }
 }
 
 @Composable
-fun Informacion(modifier: Modifier = Modifier) {
+fun Informacion(
+    onClickFeedback: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
@@ -138,12 +155,14 @@ fun Informacion(modifier: Modifier = Modifier) {
     ) {
         Datos()
         Spacer(modifier = Modifier.weight(1f))
-        BotFeedback()
+        BotFeedback(onClickFeedback = onClickFeedback)
     }
 }
 
 @Composable
-fun Datos(modifier: Modifier = Modifier) {
+fun Datos(
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(2.dp)
@@ -161,11 +180,15 @@ fun Datos(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BotFeedback(modifier: Modifier = Modifier) {
+fun BotFeedback(
+    onClickFeedback: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = modifier,
+        modifier = modifier
+            .clickable( onClick = onClickFeedback ),
     ) {
         Box(
             modifier = Modifier
@@ -189,57 +212,17 @@ fun BotFeedback(modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-fun Coments(modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        CarComentario(comentario = "Te recomiento que hables un poco de tu experiencia. Una anecdota.")
-    }
-}
-
-@Composable
-fun CarComentario(
-    comentario: String
-) {
-    Card() {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_small)),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                .size(60.dp)
-                .clip(CircleShape)
-                .background(colorScheme.primaryContainer),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Person,
-                    contentDescription = "Bot Feedback",
-                    tint = colorScheme.primary,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-            Column(
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Text(
-                    text = "Alumno",
-                )
-                Text(
-                    text = comentario,
-                )
-            }
-        }
-    }
-}
-
-
 @Preview(showBackground = true)
 @Composable
 fun PodcastPublicacionesPreview() {
     EComunicationTheme() {
-        PodcastPublicadosScreen()
+        PodcastPublicadosScreen(
+            botonNuevo = {},
+            botonFeedback = {},
+            botonEstadoPodcast = {},
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(dimensionResource(R.dimen.padding_large)),
+        )
     }
 }

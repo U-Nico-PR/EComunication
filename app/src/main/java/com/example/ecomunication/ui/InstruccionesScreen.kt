@@ -4,34 +4,33 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.ecomunication.R
 import com.example.ecomunication.ui.components.NotaYBoton
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun Instrucciones(modifier: Modifier = Modifier) {
+fun InstruccionesScreen(
+    onClickContinuar: () -> Unit,
+    onClickCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = {},
+            onClick = onClickCancel,
             modifier = Modifier
                 .align(Alignment.End)
         ) {
@@ -42,6 +41,7 @@ fun Instrucciones(modifier: Modifier = Modifier) {
         }
         Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.padding_large)))
         NotaYBoton(
+            onClick = onClickContinuar,
             texto = R.string.instrucciones,
             textoBoton = "Continuar",
             showIcon = true
@@ -53,7 +53,9 @@ fun Instrucciones(modifier: Modifier = Modifier) {
 @Composable
 fun InstruccionesPreview() {
     EComunicationTheme() {
-        Instrucciones(
+        InstruccionesScreen(
+            onClickCancel = {},
+            onClickContinuar = {},
             modifier = Modifier
                 . fillMaxSize()
                 .padding(dimensionResource(R.dimen.padding_medium))

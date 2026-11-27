@@ -47,18 +47,19 @@ import com.example.ecomunication.ui.components.ParteSuperior
 import com.example.ecomunication.ui.theme.EComunicationTheme
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    siguiente: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(dimensionResource(R.dimen.padding_large)),
+        modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
         ParteSuperior(
             texto = stringResource(R.string.iniciar_sesion)
         )
         ParteDatos()
-        ParteInferior()
+        ParteInferior(onClick = siguiente)
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -119,14 +120,17 @@ fun ParteDatos(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ParteInferior(modifier: Modifier = Modifier) {
+fun ParteInferior(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(
-            onClick = {}
+            onClick = onClick
         ) {
             Text(
                 text = "Entrar",
@@ -159,6 +163,11 @@ fun ParteInferior(modifier: Modifier = Modifier) {
 @Composable
 fun LoginPreview() {
     EComunicationTheme {
-        LoginScreen()
+        LoginScreen(
+            siguiente = {},
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(dimensionResource(R.dimen.padding_large)),
+        )
     }
 }
