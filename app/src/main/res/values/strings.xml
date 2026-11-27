@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">E-Comunicación</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="cambiar_password">Cambiar Contraseña</string>
+    <string name="numero_podcasts">Publicaciones: %d</string>
+    <string name="comentarios">Comentarios: %d</string>
+    <string name="tema"><![CDATA[<b>Tema:</b>]]> %s</string>
+    <string name="texto_cronometro">Tiempo restante:</string>
+    <string name="tiempo_cronometro">%s</string>
+    <string name="instrucciones">¿Estas Preparad@?\n\nTienes 10 minutos para leer el tema, comprenderlo y pensar en qué dirás para convencer a la audiencia que eres todo un experto.\n\nRecuerda que la audiencia solo tiene 3 minutos para escucharte.\nSon personas ocupadas.</string>
+    <string name="big_data">Big data se refiere al conjunto de datos extremadamente grandes y complejos que requieren herramientas avanzadas para su análisis y gestión, permitiendo a la organización tomar decisiones más precisas y generar valor.\n\nConsiste en la enorme cantidad de información estructurada y no estructura que generan personas, máquinas y sistemas digitales, incluyendo publicaciones en redes sociales, transacciones financieras, datos de sensores y archivos multimedia.\n\nLos datos son demasiado voluminosos, diversos y veloces para ser procesados con herramientas tradiciones como hojas de cálculo, y su análisis premite identificar patrones....</string>
+    <string name="fase_evaluacion">¡Enhorabuena!\n\nTu Podcast se ha enviado con éxito.\n\nSi no cumpliste las normas en 24 horas verás tu video publicado en la lista de publicaciones recientes o en tus Potcast Personales.</string>
+    <string name="proceso">Aquí se tiene tu bienvenida.</string>
+</resources>
